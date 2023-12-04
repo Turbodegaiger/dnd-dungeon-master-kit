@@ -1,4 +1,4 @@
-package ru.pda.dnddungeonmasterkit.graphics.buttons.menu;
+package ru.pda.dnddungeonmasterkit.graphics.buttons.start;
 
 import javax.swing.*;
 

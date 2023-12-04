@@ -3,18 +3,17 @@ package ru.pda.dnddungeonmasterkit.engine;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.pda.dnddungeonmasterkit.graphics.buttons.menu.StartButton;
+import ru.pda.dnddungeonmasterkit.graphics.panes.MenuPane;
 import ru.pda.dnddungeonmasterkit.graphics.panes.StartPane;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.List;
 
 @Component
 @Slf4j
 @AllArgsConstructor
-public class GraphicsEngine implements ActionListener {
+public class GraphicsEngine {
     public static Dimension standardResolution = new Dimension(1024, 768);
     JFrame frame;
 
@@ -31,27 +30,22 @@ public class GraphicsEngine implements ActionListener {
         frame.setVisible(true);
     }
 
-    public void drawStartScreen() {
-        log.info("Drawing menu screen.");
-        JComponent startPane = new StartPane(getStartButton("START"));
-        frame.setContentPane(startPane);
-        frame.setVisible(true);
+    public void createStartScreen(JButton startButton) {
+        log.info("Drawing start screen.");
+        JComponent startPane = new StartPane(startButton);
+        drawScreen(startPane);
         log.info("Start screen ready.");
     }
 
-    public JButton getStartButton(String text) {
-        log.info("Creating button.");
-        JButton startButton = new StartButton();
-        startButton.setText(text);
-        startButton.setSize(100, 30);
-        startButton.setLocation((int) (standardResolution.getWidth()/2), 50);
-        startButton.setHorizontalAlignment(SwingConstants.CENTER);
-        startButton.addActionListener(this);
-        return startButton;
+    public void drawMenuScreen(List<JButton> buttons) {
+        log.info("Drawing menu screen.");
+        JComponent menuPane = new MenuPane(buttons);
+
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.exit(0);
+    private void drawScreen(JComponent component) {
+        frame.removeAll();
+        frame.setContentPane(component);
+        frame.setVisible(true);
     }
 }

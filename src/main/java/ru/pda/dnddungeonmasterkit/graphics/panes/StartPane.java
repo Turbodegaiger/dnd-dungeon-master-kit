@@ -9,7 +9,7 @@ import java.awt.*;
 @Slf4j
 public class StartPane extends JPanel {
     public StartPane(JButton button) {
-        log.info("Drawing menu pane...");
+        log.info("Drawing start pane...");
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(1024, 768));
 
@@ -21,7 +21,7 @@ public class StartPane extends JPanel {
     }
 
     private JLabel createPicture() {
-        final ImageIcon icon = new ImageIcon("src/main/resources/Menu.jpg");
+        final ImageIcon icon = new ImageIcon("src/main/resources/Start.jpg");
         JLabel label = new JLabel(icon);
         if (icon != null) {
             label.setBounds(15, 170,
