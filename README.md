@@ -1,4 +1,4 @@
-#dnd-dungeon-master-kit
+# dnd-dungeon-master-kit
 Project is made to ease dungeon master's life and enhance player's experience.
 Проект создан для облегчения жизни ДМа и улучшение пользовательского экспириенса.
 
