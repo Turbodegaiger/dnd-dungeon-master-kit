@@ -14,10 +14,11 @@ public class MenuPane extends JPanel {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(1024, 768));
 
-        layeredPane.add(createBackground(), JLayeredPane.DEFAULT_LAYER, 2);
+        layeredPane.add(createBackground(), JLayeredPane.DEFAULT_LAYER, 0);
         layeredPane.add(createPicture(), JLayeredPane.PALETTE_LAYER, 1);
-        layeredPane.add(button, JLayeredPane.PALETTE_LAYER, 0);
-
+        for (int i = 0; i < button.size(); i++) {
+            layeredPane.add(button.get(i), JLayeredPane.MODAL_LAYER, i+2);
+        }
         add(layeredPane);
     }
     private JLabel createPicture() {

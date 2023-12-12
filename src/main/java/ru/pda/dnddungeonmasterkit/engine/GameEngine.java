@@ -23,15 +23,29 @@ public class GameEngine implements ApplicationRunner {
         loadStartScreen();
     }
 
-    void makeAction(ButtonAction action) {
+    void makeMenuAction(ButtonAction action) {
         switch (action) {
             case START -> loadMenuScreen();
+            case WORLD_MAP -> loadWorldMap();
+            case LOCAL_MAP -> loadLocalMap();
+            case SOUND_ON_OFF -> toggleSound();
         }
+    }
+
+    private void loadWorldMap() {
+
+    }
+
+    private void loadLocalMap() {
+
+    }
+
+    private void toggleSound() {
     }
 
     private void loadStartScreen() {
         JButton startButton = ButtonCreator.getStartButton("START");
-        startButton.addActionListener(al -> makeAction(ButtonAction.START));
+        startButton.addActionListener(al -> makeMenuAction(ButtonAction.START));
         graphicsEngine.createStartScreen(startButton);
     }
 
@@ -43,12 +57,12 @@ public class GameEngine implements ApplicationRunner {
                 "Open creature collection",
                 "Sound on/off"));
         for (JButton b : buttons) {
-            switch (b.getName()) {
-                case "Open world map" -> b.addActionListener(al -> makeAction(ButtonAction.WORLD_MAP));
-                case "Open local map" -> b.addActionListener(al -> makeAction(ButtonAction.LOCAL_MAP));
-                case "Open battle mode" -> b.addActionListener(al -> makeAction(ButtonAction.BATTLE));
-                case "Open creature collection" -> b.addActionListener(al -> makeAction(ButtonAction.CREATURES));
-                case "Sound on/off" -> b.addActionListener(al -> makeAction(ButtonAction.SOUND_ON_OFF));
+            switch (b.getText()) {
+                case "Open world map" -> b.addActionListener(al -> makeMenuAction(ButtonAction.WORLD_MAP));
+                case "Open local map" -> b.addActionListener(al -> makeMenuAction(ButtonAction.LOCAL_MAP));
+                case "Open battle mode" -> b.addActionListener(al -> makeMenuAction(ButtonAction.BATTLE));
+                case "Open creature collection" -> b.addActionListener(al -> makeMenuAction(ButtonAction.CREATURES));
+                case "Sound on/off" -> b.addActionListener(al -> makeMenuAction(ButtonAction.SOUND_ON_OFF));
             }
         }
         graphicsEngine.drawMenuScreen(buttons);

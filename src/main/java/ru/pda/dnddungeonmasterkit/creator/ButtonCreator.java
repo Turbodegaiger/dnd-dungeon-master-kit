@@ -2,7 +2,6 @@ package ru.pda.dnddungeonmasterkit.creator;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.pda.dnddungeonmasterkit.engine.GraphicsEngine;
-import ru.pda.dnddungeonmasterkit.enums.ButtonAction;
 import ru.pda.dnddungeonmasterkit.graphics.buttons.start.StartButton;
 
 import javax.swing.*;
@@ -22,13 +21,14 @@ public class ButtonCreator {
 
     public static List<JButton> getMenuButtons(List<String> nameList) {
         List<JButton> buttonList = new ArrayList<>();
-        int posY = 100;
+        int posY = 150;
         for (String s : nameList){
             JButton button = new JButton();
             button.setText(s);
-            button.setSize(125, 30);
-            button.setLocation((int) (GraphicsEngine.standardResolution.getWidth()/2), posY);
+            button.setSize(170, 30);
+            button.setLocation((int) (GraphicsEngine.standardResolution.getWidth()/2) - 75, posY);
             button.setHorizontalAlignment(SwingConstants.CENTER);
+            button.setVerticalAlignment(SwingConstants.CENTER);
             buttonList.add(button);
             posY += 50;
         }

@@ -2,7 +2,6 @@ package ru.pda.dnddungeonmasterkit.engine;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import ru.pda.dnddungeonmasterkit.graphics.panes.MenuPane;
 import ru.pda.dnddungeonmasterkit.graphics.panes.StartPane;
 
@@ -10,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-@Component
+@org.springframework.stereotype.Component
 @Slf4j
 @AllArgsConstructor
 public class GraphicsEngine {
@@ -40,11 +39,12 @@ public class GraphicsEngine {
     public void drawMenuScreen(List<JButton> buttons) {
         log.info("Drawing menu screen.");
         JComponent menuPane = new MenuPane(buttons);
-
+        drawScreen(menuPane);
+        log.info("Menu screen ready.");
     }
 
     private void drawScreen(JComponent component) {
-        frame.removeAll();
+        frame.getLayeredPane().getComponent(0).repaint();
         frame.setContentPane(component);
         frame.setVisible(true);
     }
