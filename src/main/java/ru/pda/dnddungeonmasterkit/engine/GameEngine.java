@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import ru.pda.dnddungeonmasterkit.creator.ButtonCreator;
 import ru.pda.dnddungeonmasterkit.enums.LocationMenuButtonAction;
 import ru.pda.dnddungeonmasterkit.enums.MenuButtonAction;
+import ru.pda.dnddungeonmasterkit.util.InsultGenerator;
 
 import javax.swing.*;
 import java.util.List;
@@ -33,14 +34,14 @@ public class GameEngine implements ApplicationRunner {
             case WORLD_MAP -> loadWorldMap();
             case LOCAL_MAP -> loadLocationMenuScreen();
             case SOUND_ON_OFF -> toggleSound();
-            case UTILS -> generateMomInsult();
+            case UTILS -> generateInsult();
         }
     }
 
-    private void generateMomInsult() {
-//        log.info("Придумываем оскорбления для Текилы...");
-//        String insult = InsultGenerator.generate();
-//        graphicsEngine.typeText(insult);
+    private void generateInsult() {
+        log.info("Придумываем оскорбления для Текилы...");
+        String insult = InsultGenerator.generate();
+        graphicsEngine.typeText(insult);
     }
 
     private void makeLocationMenuAction(LocationMenuButtonAction action) {

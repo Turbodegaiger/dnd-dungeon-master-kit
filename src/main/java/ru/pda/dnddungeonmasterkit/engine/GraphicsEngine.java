@@ -117,6 +117,10 @@ public class GraphicsEngine {
         log.info("Local map screen ready.");
     }
 
+    public void typeText(String text) {
+        JOptionPane.showMessageDialog(null, text,"Вас оскорбили!", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
     private void drawScreen(JComponent component) {
         frame.setContentPane(component);
