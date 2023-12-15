@@ -7,11 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 
 @Slf4j
-public class StartPane extends JPanel {
+public class StartPane extends CustomJPanel {
     public StartPane(JButton button) {
         log.info("Drawing start pane...");
+        this.setName("StartPane");
         JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setPreferredSize(new Dimension(1024, 768));
+        layeredPane.setPreferredSize(GraphicsEngine.standardResolution);
 
         layeredPane.add(createBackground(), JLayeredPane.DEFAULT_LAYER, 2);
         layeredPane.add(createPicture(), JLayeredPane.PALETTE_LAYER, 1);
@@ -28,20 +29,11 @@ public class StartPane extends JPanel {
                     icon.getIconWidth(),
                     icon.getIconHeight());
         } else {
-            System.err.println("Menu icon not found; using black square instead.");
+            log.info("Menu icon not found; using black square instead.");
             label.setBounds(15, 170, 30, 30);
             label.setOpaque(true);
             label.setBackground(Color.BLACK);
         }
-        return label;
-    }
-
-    private JLabel createBackground() {
-        JLabel label = new JLabel();
-        label.setBounds(5, 5, 5, 5);
-        label.setSize(GraphicsEngine.standardResolution);
-        label.setOpaque(true);
-        label.setBackground(Color.BLACK);
         return label;
     }
 }

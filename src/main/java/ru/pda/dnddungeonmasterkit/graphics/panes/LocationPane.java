@@ -1,4 +1,4 @@
 package ru.pda.dnddungeonmasterkit.graphics.panes;
 
-public class LocationPane {
+public class LocationPane extends CustomJPanel {
 }
