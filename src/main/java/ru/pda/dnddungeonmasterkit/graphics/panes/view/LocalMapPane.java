@@ -1,4 +1,4 @@
-package ru.pda.dnddungeonmasterkit.graphics.panes;
+package ru.pda.dnddungeonmasterkit.graphics.panes.view;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.pda.dnddungeonmasterkit.engine.GraphicsEngine;
@@ -13,7 +13,6 @@ public class LocalMapPane extends MapPane {
         String fileName = "locations/" + locationName + ".jpg";
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(GraphicsEngine.standardResolution);
-
 
         layeredPane.add(createPicture(fileName), JLayeredPane.POPUP_LAYER, 40);
         layeredPane.add(button, JLayeredPane.DRAG_LAYER, 41);

@@ -24,7 +24,7 @@ public class ButtonCreator {
         JButton backButton = new BackButton();
         backButton.setText(s);
         backButton.setSize(150, 30);
-        backButton.setLocation((int) (GraphicsEngine.standardResolution.getWidth() - 175), 5);
+        backButton.setLocation((int) (GraphicsEngine.standardResolution.getWidth() - 200), 5);
         backButton.setHorizontalAlignment(SwingConstants.CENTER);
         return backButton;
     }
@@ -32,15 +32,19 @@ public class ButtonCreator {
     public static List<JButton> getMenuButtons(List<String> nameList) {
         List<JButton> buttonList = new ArrayList<>();
         int posY = 260;
-        for (String s : nameList){
+        for (int i = 0; i < nameList.size(); i++) {
             JButton button = new JButton();
-            button.setText(s);
+            button.setText(nameList.get(i));
             button.setSize(170, 30);
             button.setLocation((int) (GraphicsEngine.standardResolution.getWidth()/2) - 75, posY);
             button.setHorizontalAlignment(SwingConstants.CENTER);
             button.setVerticalAlignment(SwingConstants.CENTER);
             buttonList.add(button);
-            posY += 50;
+            if (i < nameList.size() - 2) {
+                posY += 50;
+            } else {
+                posY += 225;
+            }
         }
         return buttonList;
     }
@@ -55,6 +59,22 @@ public class ButtonCreator {
             if (s.equals("Back to menu")) {
                 posY += 150;
             }
+            button.setLocation((int) (GraphicsEngine.standardResolution.getWidth()) - 200, posY);
+            button.setHorizontalAlignment(SwingConstants.CENTER);
+            button.setVerticalAlignment(SwingConstants.CENTER);
+            buttonList.add(button);
+            posY += 50;
+        }
+        return buttonList;
+    }
+
+    public static List<JButton> getLocationBackgroundMenuButton(List<String> nameList) {
+        List<JButton> buttonList = new ArrayList<>();
+        int posY = 150;
+        for (String s : nameList){
+            JButton button = new JButton();
+            button.setText(s);
+            button.setSize(170, 30);
             button.setLocation((int) (GraphicsEngine.standardResolution.getWidth()) - 200, posY);
             button.setHorizontalAlignment(SwingConstants.CENTER);
             button.setVerticalAlignment(SwingConstants.CENTER);
